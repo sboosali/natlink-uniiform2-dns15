@@ -1,0 +1,232 @@
+----------------------------------------
+python start_natlinkconfigfunctions.py
+
+:: run prompt as admin
+cd C:\NatLink\NatLink\confignatlinkvocolaunimacro
+
+----------------------------------------
+
+get https://github.com/mhammond/pywin32/releases
+e.g. pywin32-222.win32-py2.7.exe
+
+the command line interface, which is contained in
+natlinkconfigfunctions.py.  Just start this program from the start
+menu or the folder that you are in now, preferably in elevated mode too with start_natlinkconfigfunctions.py
+
+; runas /noprofile /user:Administrator dir
+
+----------------------------------------
+On a fresh (but with Dragon) Windows 7 VM, I ran the following, and a few permutations:
+
+:: admin prompt
+C:\NatLink\NatLink\confignatlinkvocolaunimacro>C:\Python27\python.exe natlinkconfigfunctions.py
+baseFolder from argv:
+baseFolder was empty, take wd: C:\NatLink\NatLink\confignatlinkvocolaunimacro
+inserting C:\NatLink\NatLink\MacroSystem\core to pythonpath...
+Traceback (most recent call last):
+  File "natlinkconfigfunctions.py", line 183, in <module>
+    import natlinkstatus, natlinkcorefunctions, RegistryDict
+  File "C:\NatLink\NatLink\MacroSystem\core\natlinkstatus.py", line 174, in <mod
+ule>
+    import RegistryDict, natlinkcorefunctions
+  File "C:\NatLink\NatLink\MacroSystem\core\natlinkcorefunctions.py", line 34, i
+n <module>
+    from inivars import IniVars
+  File "C:\NatLink\NatLink\MacroSystem\core\inivars.py", line 8, in <module>
+    import utilsqh
+  File "C:\NatLink\NatLink\MacroSystem\core\utilsqh.py", line 27, in <module>
+    import htmlencode
+ImportError: No module named htmlencode
+
+:: start_postinstallscript_pywin32.cmd
+C:\NatLink\NatLink\confignatlinkvocolaunimacro>C:\python27\python.exe C:\pytho
+7\scripts\pywin32_postinstall.py -install
+Copied pythoncom27.dll to C:\Windows\system32\pythoncom27.dll
+Copied pythoncomloader27.dll to C:\Windows\system32\pythoncomloader27.dll
+Copied pywintypes27.dll to C:\Windows\system32\pywintypes27.dll
+Registered: Python.Interpreter
+Registered: Python.Dictionary
+Registered: Python
+-> Software\Python\PythonCore\2.7\Help[None]=None
+-> Software\Python\PythonCore\2.7\Help\Pythonwin Reference[None]='C:\\python27
+Lib\\site-packages\\PyWin32.chm'
+Pythonwin has been registered in context menu
+Shortcut for Pythonwin created
+Shortcut to documentation created
+The pywin32 extensions were successfully installed.
+
+----------------------------------------
+
+C:\NatLink\NatLink\confignatlinkvocolaunimacro>natlinkconfigfunctions.py
+baseFolder from argv: C:\NatLink\NatLink\confignatlinkvocolaunimacro
+checking PythonPathAndRegistry
+Type 'u' for a usage message
+
+NatLink/Vocola/Unimacro config> u
+
+Use either from the command line like 'natlinkconfigfunctions.py -i'
+or in an interactive session using the CLI (command line interface).
+
+[Status]
+
+i       - info, print information about the NatLink status
+I       - settings, print information about the natlinkstatus.ini settings
+j       - print PythonPath variable
+
+[NatLink]
+
+e/E     - enable/disable NatLink
+
+y/Y     - enable/disable debug callback output of natlinkmain
+x/X     - enable/disable debug load output     of natlinkmain
+
+d/D     - set/clear DNSInstallDir, the directory where NatSpeak/Dragon is installed
+c/C     - set/clear DNSINIDir, where NatSpeak/Dragon INI files are located
+
+[Vocola]
+
+v/V     - enable/disable Vocola by setting/clearing VocolaUserDir, the user
+          directory for Vocola user files (~ or %HOME% allowed).
+
+b/B     - enable/disable distinction between languages for Vocola user files
+a/A     - enable/disable the possibility to use Unimacro actions in Vocola
+
+[Unimacro]
+
+o/O     - enable/disable Unimacro, by setting/clearing the UnimacroUserDirectory, where
+          the Unimacro user INI files are located, and several other directories (~ or %HOME% allowed)
+p/P     - set/clear path for program that opens Unimacro INI files.
+l       - copy header file Unimacro.vch into Vocola User Directory
+m/M     - insert/remove an include line for Unimacro.vch in all Vocola
+          command files
+
+[UserDirectory]
+n/N     - enable/disable UserDirectory, the directory where
+          User NatLink grammar files are located (e.g., ...\My Documents\NatLink
+)
+
+[Repair]
+r/R     - register/unregister NatLink, the natlink.pyd (natlink.pyd) file
+          (should not be needed)
+z/Z     - silently enables NatLink and registers natlink.pyd / disables NatLink
+          and unregisters natlink.pyd.
+[AutoHotkey]
+h/H     - set/clear the AutoHotkey exe directory.
+k/K     - set/clear the User Directory for AutoHotkey scripts.
+[Other]
+
+u/usage - give this list
+q       - quit
+
+help <command>: give more explanation on <command>
+
+
+NatLink/Vocola/Unimacro config> i
+UnimacroDirectory: C:\NatLink\Unimacro
+---NatLink is enabled
+        CoreDirectory   C:\NatLink\NatLink\MacroSystem\core
+        InstallVersion  4.1uniform
+---Vocola is disabled
+---Unimacro is disabled
+---User defined grammars are disabled
+other NatLink info:
+        DebugLoad       -
+        DebugCallback   -
+system information:
+        DNSInstallDir   C:\Program Files\Nuance\NaturallySpeaking15
+        DNSIniDir       C:\ProgramData\Nuance\NaturallySpeaking15
+        DNSVersion      15
+        DNSName Dragon
+        WindowsVersion  7
+        PythonVersion   27
+remaining information:
+        NatlinkPydRegistered    -
+        AhkUserDir      -
+        UnimacroDirectory       C:\NatLink\Unimacro
+        BaseDirectory   C:\NatLink\NatLink\MacroSystem
+        AhkExeDir       -
+
+If you changed things, you must restart Dragon
+
+
+NatLink/Vocola/Unimacro config> r
+do action: (Re) register and enable natlink.pyd
+C:\NatLink\NatLink\MacroSystem\core\natlink.pyd does not exist, remove "NatlinkP
+ydRegistered" from natlinkstatus.ini and setup up new pyd file...
+copied pyd (=dll) file C:\NatLink\NatLink\MacroSystem\core\PYD\natlink_2.7_Ver15
+.pyd to C:\NatLink\NatLink\MacroSystem\core\natlink.pyd
+Registring pyd file succesful: C:\NatLink\NatLink\MacroSystem\core\natlink.pyd
+Registring pyd file succesful: C:\NatLink\NatLink\MacroSystem\core\natlink.pyd
+NatLink enabled, you can now restart Dragon
+
+
+NatLink/Vocola/Unimacro config> e
+do action: Enabling NatLink:
+Registring pyd file succesful: C:\NatLink\NatLink\MacroSystem\core\natlink.pyd
+NatLink enabled, you can now restart Dragon
+
+
+NatLink/Vocola/Unimacro config> I
+Settings in file "natlinkstatus.ini" in
+core directory: "C:\NatLink\NatLink\MacroSystem\core"
+
+        NatlinkPydRegistered:   27;15
+
+
+NatLink/Vocola/Unimacro config> j
+['C:\\NatLink\\NatLink\\confignatlinkvocolaunimacro',
+ 'C:\\Windows\\system32\\python27.zip',
+ 'C:\\NatLink\\NatLink\\MacroSystem\\core',
+ 'C:\\Python27\\DLLs',
+ 'C:\\Python27\\lib',
+ 'C:\\Python27\\lib\\plat-win',
+ 'C:\\Python27\\lib\\lib-tk',
+ 'C:\\Python27',
+ 'C:\\Python27\\lib\\site-packages',
+ 'C:\\Python27\\lib\\site-packages\\win32',
+ 'C:\\Python27\\lib\\site-packages\\win32\\lib',
+ 'C:\\Python27\\lib\\site-packages\\Pythonwin']
+
+
+NatLink/Vocola/Unimacro config> z
+C:\NatLink\NatLink\MacroSystem\core\natlink.pyd does not exist, remove "NatlinkP
+ydRegistered" from natlinkstatus.ini and setup up new pyd file...
+copied pyd (=dll) file C:\NatLink\NatLink\MacroSystem\core\PYD\natlink_2.7_Ver15
+.pyd to C:\NatLink\NatLink\MacroSystem\core\natlink.pyd
+Registring pyd file succesful: C:\NatLink\NatLink\MacroSystem\core\natlink.pyd
+Registring pyd file succesful: C:\NatLink\NatLink\MacroSystem\core\natlink.pyd
+NatLink enabled, you can now restart Dragon
+
+
+------------------------------------------------------------
+DNS15 restarted
+
+-- pops up
+Cannot load compatibility module support (GUID={dd990001-bb89-11d2-b031-0060088dc929})
+
+------------------------------------------------------------
+vcredist_x86.exe 
+
+Don't use the 64 bit version, regardless of your OS.
+
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Classes\CLSID\{dd990001-bb89-11d2-b031-0060088dc929}\InprocServer32]
+
+@="C:\\NatLink\\NatLink\\MacroSystem\\core\\natlink.pyd"
+
+"ThreadingModel"="Apartment"
+
+------------------------------------------------------------
+
+After installing vcredist_x86.exe  and reregistering natlink ('r' then 'e' in the cmdln installer), from this error:
+
+    Cannot load compatibility module support (GUID={dd990001-bb89-11d2-b031-0060088dc929})
+
+I got _sample8.py to work. It seems slow, but that might be the VM. e.g.
+
+    "demo sample eight these are multiple words stop"
+
+I'm going to test with different grammars, but I think it works!
+
+------------------------------------------------------------

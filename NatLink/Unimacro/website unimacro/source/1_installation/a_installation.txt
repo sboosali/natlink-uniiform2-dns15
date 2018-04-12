@@ -1,0 +1,107 @@
+Installation of NatLink/Vocola 2/Unimacro
+
+Release 4.1tango (July 24, 2017):
+ 
+-*Download link(http://sourceforge.net/projects/natlink/files/natlink/natlinktest4.1/setup-natlink-4.1tango.exe/download, release 4.1tango)*.
+ -Some changes in the configure program. The checking/confirming that that the natlink.pyd (dll) is did not work, so we should trust this works correct. In the past there were occasional problems with this.
+ -Some fixes in Messages Window for diacritical characters
+ -New Unimacro grammar link(/grammars/specificgrammars/chromebrowsing/index.html, *chrome browsing*) which implements commands for the *Click by Voice* extension of Mark Lillibridge
+ -Improved *task* switching, also *document* switching for chrome and other multi tab applications.
+ 
+ Release 4.1romeo (May 1, 2017):
+ 
+-*Download link(http://sourceforge.net/projects/natlink/files/natlink/natlinktest4.1/setup-natlink-4.1romeo.exe/download, release 4.1romeo)*.
+ 
+-A small but essential fix in the installer program, I hope.
+-Works with Dragon up to version 14.
+-Lots of changes in the configure program, making things more secure.
+-Improving the coupling between Vocola and Unimacro when Unimacro is not enabled
+-Pre-final release.
+-New Unimacro grammar: chrome_browsing.py, using the splendid "Click by Voice" extension written by Mark Lillybridge.
+-Hints for fixing the msvcr100.dll problem and for failure of the installation of the Windows (win32) extensions of Python.
+-NatLink does not (yet) work with Dragon 15.
+-Chrome_browsing.py grammar, using the "Click by Voice" extension written by Mark Lillibridge.
+ 
+ Release 4.1papa (January 16, 2016): link(http://sourceforge.net/projects/natlink/files/natlink/natlinktest4.1/setup-natlink-4.1papa.exe/download, release 4.1papa)
+
+- Minor test release
+-- checking the correct Dragon and Windows version
+-- testing Vocola changes
+
+ Previous (4.1oscar) is also still available:
+- NatLink installer
+
+--Lots of changes in an effort to make things more intuitive and more stable
+--Now Unimacro is enabled/disabled by specifying/clearing of the UnimacroUserDirectory.
+--A separate UserDirectory for user grammars or eg Dragonfly is now supported.
+
+- Vocola release 2.8.2
+-- Extra checks for missing modules in start_configurenatlink.py
+
+- Unimacro
+-- Several grammars, will be elaborated ASAP.
+
+ Other recent changes:
+
+- Unimacro folders grammar: link(/grammars/globalgrammars/folders/trackfoldershistory.html, recent folders option) and link(/grammars/globalgrammars/folders/details.html, support for xplorer2).
+- Now recognises also Dragon 13
+- Adapted playString function (SendInput by Mark Lillibridge) via natlinkutils.playString
+- natlinkmain.py has nearly all code caught in a try except statement
+
+ And also:
+-There is some backward compatibility broken, see page about link(/installation/technicaldetails/natlinkutils.html, *natlinkutils*).
+-Unimacro has new features: link(/features/autohotkey/index.html, *AutHotkey support*) (also usable with Vocola) and
+link(/features/actions/actionclassesforapplications.html, *action classes for applications*).
+-The grammar link(/grammars/globalgrammars/lines/index.html, _lines) has in some application now the *line numbers modulo hundred* possibility.
+-Works with Python 2.6 and Python 2.7
+-NatLink for Dragon 12 does NOT work in Python 2.5 any more.
+-The installation of Python 2.5 in Windows 8 probably has complications, so please take Python 2.6 or Python 2.7.
+-Test results are still welcome.
+-link(/aboutunimacro/donation/index.html, *Donations*) are very welcome.
+-Have a look at some demo video's:
+
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/iViDXfyYPLo?list=PLgaYd2iGMDFkqaw-BBwhUWhZGU-ZOOdlM" frameborder="0" allowfullscreen></iframe>
+
+ For Dragon 11 and before: either install link(http://sourceforge.net/projects/natlink/files/natlink/natlink4.0/setup-natlink-4.0.exe/download, Release 4.0), but you are probably better off with this beta release.
+
+-So please try this *4.1papa* release.
+-Some improvements in configure program
+-Stable with most things of Dragon 11.
+-Works with Python2.5 and Python2.6 (recommended).
+
+
+-The files are in the link("http://sourceforge.net/projects/natlink/files", "*NatLink repository*"). Click on the different "buttons" in case the links below do not work.
+
+   Installing Python2.7.12
+-Download link(http://sourceforge.net/projects/natlink/files/pythonfornatlink/python2.7.12.exe/download, *Python Needed for NatLink 2.7*).  This is a self-extracting zip file, with extension .exe. December 2016 2.7.12 is the latest 2.7 release.
+-Run the self-extracting executable to unzip the installers to a temporary folder.
+-Install *Python* (for all users, which is the default)
+-Install the three other packages, the *windows extensions (pywin32)*, *wxPython* and (only needed for VoiceCode) *PyXML*.
+-*Warning*: NatLink does not work when you install a "64 bit" python version.
+
+ 
+   Installing Python2.6 
+-Download link(http://sourceforge.net/projects/natlink/files/pythonfornatlink/python2.6.zip/download, *Python Needed for NatLink 2.6*).  This is a self-extracting zip file. 
+-Run the self-extracting executable to unzip the installers to a temporary folder and install the different items, starting with python-2.6.4.msi.
+-*Warning*: NatLink does not work when you install a "64 bit" python version.
+
+
+   Download and install NatLink/Vocola 2/Unimacro
+
+-Download the combined installer as given above.
+-Run the downloaded file.
+-Install on *C:\NatLink* (or *D:\NatLink* or any other drive of your choice). Installing in "C:\Program files\NatLink" is *NOT* advised any more.
+
+ Directory layout after installation
+ 
+When you installed at *C:\NatLink* you will get the following directory structure:
+-NatLink and Vocola 2 are in *C:\NatLink\NatLink*,
+-Unimacro is in *C:\NatLink\Unimacro*
+-User defined grammars can be in any location, for example *C:\UserDirectory* or *C:\NatLink\NatlinkUserDirectory*. You can also choose Dragonfly for this directory.
+-The core directory is *C:\NatLink\NatLink\MacroSystem\core* (the "controlling" NatLink files are located here)
+-Internally the compiled Vocola 2 files will go in *C:\NatLink\NatLink\MacroSystem* (this is the baseDirectory of NatLink. Do not put anything else in these directory).
+-In case you cannot find your configuration program (the GUI): it is located in *C:\NatLink\NatLink\confignatlinkvocolaunimacro*. The configuration (GUI) program is the file "configurenatlink.pyw". In order to run elevated mode, you should start the script "start_configurenatlink.py" in the same directory.
+-Elevated mode is only needed the first time you run the configure program, and when you want to enable/disable NatLink or when you want to unregister or (re)register *natlink.pyd*.
+
+   Proceed with link("/installation/configuration.html", "the configuration")
